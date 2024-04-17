@@ -1,19 +1,49 @@
 <?php
-//配列
-$array = ['テスト', 1, 2, 3];
-
-echo $array[1];
-echo '<pre>';
-var_dump($array);
-echo '<pre>';
-
-$array2 = [
-    ['R', 'G', 'B'],
-    [220, 150, 100]
+//連想配列
+$array_member = [
+    'name' => '本田',
+    'height' => 170,
+    'hobby' => 'サッカー'
 ];
 
-echo '<pre>';
-var_dump($array2);
-echo '<pre>';
+echo $array_member['hobby'];
+echo '<br>';
 
-echo $array2[1][1];
+$array_member_2 = [
+    '本田' => [
+        'height' => 170,
+        'hobby' => 'サッカー'
+    ],
+    '田中' => [
+        'height' => 160,
+        'hobby' => '野球'
+    ]
+];
+
+echo $array_member_2['田中']['height'];
+echo '<br>';
+
+$array_member_3 = [
+    'class1' => [
+        '本田' => [
+            'height' => 170,
+            'hobby' => 'サッカー'
+        ],
+        '田中' => [
+            'height' => 160,
+            'hobby' => '野球'
+        ]
+    ],
+    'class2' => [
+        '山田' => [
+            'height' => 180,
+            'hobby' => 'バスケ'
+        ],
+        '石田' => [
+            'height' => 175,
+            'hobby' => '卓球'
+        ]
+    ]
+];
+
+echo $array_member_3['class2']['山田']['height'];
