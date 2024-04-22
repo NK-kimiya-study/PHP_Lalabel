@@ -1,65 +1,65 @@
 <?php
-//条件分岐
-$height = 91;
+//foreach
 
-if ($height == 90) {
-    echo '身長は' . $height . 'cmです';
+$members = [
+    'name' => 'テスト',
+    'height' => 170,
+    'hobby' => "サッカー"
+];
+
+//バリューのみ
+foreach ($members as $member) {
+    echo $member;
 }
 
-if ($height >= 91) {
-    echo '身長は' . $height . 'cmです';
+//キーとバリュー
+foreach ($members as $key => $value) {
+    echo $key . 'は' . $value . 'です';
 }
 
-if ($height <= 90) {
-    echo '身長は' . $height . 'cmではありません';
-}
+//多段階のforeach
+$members_2 = [
+    'テスト' => [
+        'height' => 170,
+        'hobby' => "サッカー"
+    ],
+    'テスト2' => [
+        'height' => 165,
+        'hobby' => "サッカー"
+    ]
+];
 
-if ($height !== 90) {
-    echo '身長は90cmではありません';
-}
-
-$signal = 'blue';
-
-if ($signal === 'red') {
-    echo 'STOP';
-} else if ($signal === 'yellow') {
-    echo 'pause';
-} else {
-    echo 'move on';
-}
-
-$speed = 80;
-
-if ($signal === 'blue') {
-    if ($speed >= 80) {
-        echo 'speeding violation';
+foreach ($members_2 as $member_1) {
+    foreach ($member_1 as $member) {
+        echo $member;
     }
 }
 
-//データが入っているかどうか
-$test = '1';
-
-if (empty($test)) {
-    echo '変数は空';
+//for(繰り返す回数が決まってる場合)
+//while(繰り返す回数が決まってない場合)
+for ($i = 0; $i < 10; $i++) {
+    echo $i;
 }
 
-if (!empty($test)) {
-    echo '変数は空ではありません';
+//continue,break
+for ($i = 0; $i < 10; $i++) {
+    if ($i === 5) {
+        break;
+    }
+    echo $i;
 }
 
-//AND OR
-
-$signal_1 = 'red';
-$signal_2 = 'blue';
-
-if ($signal_1 === 'red' && $signal_2 === 'blue') {
-    echo '赤と青';
-}
-if ($signal_1 === 'red' || $signal_2 === 'blue') {
-    echo '赤か青';
+for ($i = 0; $i < 10; $i++) {
+    if ($i === 5) {
+        continue;
+    }
+    echo $i;
 }
 
-//三項演算子
-$math = 80;
-$comment = $math > 80 ? 'good' : 'bad';
-echo $comment;
+echo '<br>';
+
+$j = 0;
+while ($j < 5) {
+    echo $j;
+    $j++;
+}
