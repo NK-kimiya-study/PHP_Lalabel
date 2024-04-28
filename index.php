@@ -1,13 +1,7 @@
 <?php
-$globalVariable = 'グローバル変数';
+require 'common/common.php';
 
-function checkScope($str)
-{
-    $localVariable = 'ローカル変数';
-    echo $localVariable;
-    //global $globalVariable;
-    echo $str;
-}
-
-echo $globalVariable;
-echo checkScope($globalVariable);
+echo $commonVariabl;
+echo __DIR__;
+echo __FILE__;
+commonTest();
