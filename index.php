@@ -1,17 +1,13 @@
 <?php
-$postalCode = '123-4567';
-//camelCase
-function checkPostalCode($str)
-{
-    $replaced = str_replace('-', '', $str);
-    $length = strlen($replaced);
+$globalVariable = 'グローバル変数';
 
-    if ($length === 7) {
-        return true;
-    }
-    return false;
+function checkScope($str)
+{
+    $localVariable = 'ローカル変数';
+    echo $localVariable;
+    //global $globalVariable;
+    echo $str;
 }
 
-var_dump(checkPostalCode($postalCode));
-//snakeCase
-//check_postal_code()
+echo $globalVariable;
+echo checkScope($globalVariable);
