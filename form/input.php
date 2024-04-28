@@ -1,12 +1,15 @@
 <?php
+//入力、確認、完了 input.php,confirm.php,thanks.php
+//input.php
+$pageFlag = 0;
 
-if (!empty($_POST['your_name'])) {
-    //スーパーグローバル変数　連想配列
-    echo '<pre>';
-    var_dump($_POST);
-    echo '</pre>';
+if (!empty($_POST['btn_confirm'])) {
+    $pageFlag = 1;
 }
 
+if (!empty($_POST['btn_submit'])) {
+    $pageFlag = 2;
+}
 ?>
 
 <!DOCTYPE html>
@@ -19,16 +22,38 @@ if (!empty($_POST['your_name'])) {
 </head>
 
 <body>
-    <form method="POST" action="input.php">
-        氏名
-        <input type="text" name="your_name">
-        <br>
-        <input type="checkbox" name="sports[]" value="神奈川県">神奈川県
-        <input type="checkbox" name="sports[]" value="埼玉">埼玉
-        <input type="checkbox" name="sports[]" value="栃木">栃木
-        <input type="checkbox" name="sports[]" value="群馬">群馬
-        <input type="submit" value="送信">
-    </form>
+    <?php
+    if ($pageFlag === 0) : ?>
+        <form method="POST" action="input.php">
+            氏名
+            <input type="text" name="your_name">
+            <br>
+            メールアドレス
+            <input type="email" name="email">
+            <br>
+            <input type="submit" value="確認する" name="btn_confirm">
+        </form>
+    <?php endif; ?>
+
+    <?php
+    if ($pageFlag === 1) : ?>
+        <form method="POST" action="input.php">
+            氏名
+            <?php echo $_POST['your_name']; ?>
+            <br>
+            <?php echo $_POST['email']; ?>
+            <br>
+            <input type="submit" value="送信する" name="btn_submit">
+            <input type="hidden" name="your_name" value="<?php echo $_POST['your_name']; ?>">
+            <input type="hidden" name="email" value="<?php echo $_POST['email']; ?>">
+        </form>
+    <?php endif; ?>
+
+    <?php
+    if ($pageFlag === 2) : ?>
+        送信が完了しました。
+    <?php endif; ?>
+
 </body>
 
 </html>
