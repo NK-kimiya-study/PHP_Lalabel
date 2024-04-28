@@ -1,17 +1,33 @@
 <?php
-//switch
-$data = '1';
-
-switch ($data) {
-    case $data === 1:
-        echo '1';
-        break;
-    case 2:
-        echo '2';
-        break;
-    case 3:
-        echo '3';
-        break;
-    default:
-        echo 'default';
+//ユーザー定義関数
+function test()
+{
+    echo 'テスト';
 }
+
+test();
+
+$comment = 'コメント';
+function getComment($string)
+{
+    echo $string;
+}
+
+getComment($comment);
+
+function getNumberOfComment()
+{
+    return 5;
+}
+
+$commentNumber = getNumberOfComment();
+echo $commentNumber;
+
+function sumPrice($int1, $int2)
+{
+    $int3 = $int1 + $int2;
+    return $int3;
+}
+
+$total = sumPrice(3, 5);
+echo $total;
