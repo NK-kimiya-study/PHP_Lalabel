@@ -1,7 +1,7 @@
 <?php
-require 'common/common.php';
+$test = 123;
+$test2 = 456;
 
-echo $commonVariabl;
-echo __DIR__;
-echo __FILE__;
-commonTest();
+echo $test;
+exit();
+echo $test2;
