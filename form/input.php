@@ -5,9 +5,9 @@ session_start(); //CSRF対策
 header('X-FRAME-OPTIONS:DENY'); //XSS対策
 //入力、確認、完了 input.php,confirm.php,thanks.php
 //input.php
-if (!empty($_SESSION)) {
+if (!empty($_POST)) {
     echo '<pre>';
-    var_dump($_SESSION);
+    var_dump($_POST);
     echo '</pre>';
 }
 $pageFlag = 0;
@@ -56,6 +56,34 @@ function h($str)
             <input type="email" name="email" value="<?php if (!empty($_POST['email'])) {
                                                         echo h($_POST['email']);
                                                     } ?>">
+            <br>
+            ホームページ
+            <input type="url" name="url" value="<?php if (!empty($_POST['url'])) {
+                                                    echo h($_POST['url']);
+                                                } ?>"><br>
+            性別
+            <input type="radio" name="gender" value="0">男性
+            <input type="radio" name="gender" value="1">女性
+            <br>
+            年齢
+            <select name="age">
+                <option value="">選択してください</option>
+                <option value="1">~19歳</option>
+                <option value="2">20歳~29歳</option>
+                <option value="3">30歳~39歳</option>
+                <option value="4">40歳~49歳</option>
+                <option value="5">50歳~59歳</option>
+                <option value="6">60歳~</option>
+            </select>
+            <br>
+            お問い合わせ内容
+            <textarea name="contact">
+            <?php if (!empty($_POST['contact'])) {
+                echo h($_POST['contact']);
+            } ?>
+            </textarea>
+            <br>
+            <input type="checkbox" name="caution" value="1">注意事項のチェック
             <br>
             <input type="submit" value="確認する" name="btn_confirm">
             <input type="hidden" name="csrf" value="<?php echo $token; ?>">
