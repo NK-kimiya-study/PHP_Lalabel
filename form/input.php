@@ -200,6 +200,9 @@ function h($str)
     if ($pageFlag === 2) : ?>
         <?php if ($_POST['csrf'] === $_SESSION['csrfToken']) : ?>
             送信が完了しました。
+            <?php require 'insert.php';
+            insertContact($_POST);
+            ?>
             <?php unset($_SESSION['csrfToken']); ?>
         <?php endif; ?>
     <?php endif; ?>
