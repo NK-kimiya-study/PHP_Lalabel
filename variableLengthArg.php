@@ -22,3 +22,17 @@ echo '<br>';
 
 $variableLength = combine('テスト１', 'テスト２', 'テスト3');
 echo $variableLength;
+
+//コールバック関数　(引数に関数を入れる)
+function combineSpace(string $firstName, string $lastName): string
+{
+    return $lastName . '　' . $firstName;
+}
+$nameParams = ['名前', '苗字'];
+function useCombine(array $name, callable $func)
+{
+    $concatName = $func(...$name);
+    print($func . '関数での試合結果: ' . $concatName . '<br>');
+}
+
+useCombine($nameParams, 'combineSpace');
